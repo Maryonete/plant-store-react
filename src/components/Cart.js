@@ -1,3 +1,4 @@
+import "../styles/Cart.css";
 const plantes = [
   { plante: "monstera", prix: 8 },
   { plante: "lierre", prix: 10 },
@@ -17,7 +18,7 @@ const Cart = () => {
   });
 
   return (
-    <div>
+    <div className="lmj-cart">
       <h2>Panier</h2>
 
       <ul>{listPlantes}</ul>
