@@ -1,11 +1,15 @@
 import "../styles/Banner.css";
+import Recommendation from "./Recommendation";
 import logo from "../assets/logo.png";
 
 const Banner = () => {
+  const title = "La maison jungle";
   return (
     <div className="lmj-banner">
-      <img src={logo} alt="La maison jungle" className="lmj-logo" />
-      <h1>La maison jungle</h1>
+      <div className="lmj-banner-row">
+        <img src={logo} alt="La maison jungle" className="lmj-logo" />
+        <h1 className="lmj-banner-title">{title}</h1>
+      </div>
     </div>
   );
 };
