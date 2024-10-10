@@ -31,7 +31,7 @@ Cette application React permet aux utilisateurs de gérer leurs plantes en affic
 1. Clonez le dépôt :
 
 ```bash
-git clone https://github.com/votre-utilisateur/nom-du-depot.git
+git clone https://github.com/Maryonete/plant-store-react
 ```
 
 2. Accédez au répertoire du projet :
