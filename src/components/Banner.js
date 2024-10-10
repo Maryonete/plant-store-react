@@ -1,5 +1,4 @@
 import "../styles/Banner.css";
-import Recommendation from "./Recommendation";
 import logo from "../assets/logo.png";
 
 const Banner = () => {
