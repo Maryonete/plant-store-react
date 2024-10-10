@@ -1,6 +1,6 @@
-# Application React : Gestion des Plantes 🌱
+<div style="text-align: center;"> <img src="src/assets/logos/nom_du_logo.png" alt="Logo de l'application" width="150" /> </div>
 
-![logo de l'application](src/assets/logo.png)
+# Application React : Gestion des Plantes 🌱
 
 ## Description
 
