@@ -1,4 +1,4 @@
-<div style="text-align: center;"> <img src="src/assets/logos/nom_du_logo.png" alt="Logo de l'application" width="150" /> </div>
+![Logo de l'application](src/assets/logos/nom_du_logo.png)
 
 # Application React : Gestion des Plantes 🌱
 

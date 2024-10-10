@@ -1,28 +1,35 @@
 import "../styles/Cart.css";
-const plantes = [
-  { plante: "monstera", prix: 8 },
-  { plante: "lierre", prix: 10 },
-  { plante: "bouquet de fleurs", prix: 15 },
-];
+
+import { useState } from "react";
+
 const Cart = () => {
-  let totalPrix = 0;
+  const monsteraPrice = 8;
+  // cart : le state
+  // updateCart : fonction pour maj ce state
+  // useState(0) : état initial de notre state
+  const [cart, updateCart] = useState(0);
 
-  // Utiliser un tableau pour stocker les éléments de la liste
-  const listPlantes = plantes.map(({ plante, prix }) => {
-    totalPrix += prix;
-    return (
-      <li key={plante}>
-        {plante} - {prix} €
-      </li>
-    ); // Utiliser une clé unique pour chaque élément de liste
-  });
+  const [isOpen, setIsOpen] = useState(false);
 
-  return (
+  return isOpen ? (
     <div className="lmj-cart">
+      <button
+        className="lmj-cart-toggle-button"
+        onClick={() => setIsOpen(false)}
+      >
+        Fermer le Panier
+      </button>
       <h2>Panier</h2>
-
-      <ul>{listPlantes}</ul>
-      <p>Total: {totalPrix}</p>
+      <div>
+        Monstera : {monsteraPrice}€
+        <button onClick={() => updateCart(cart + 1)}>Ajouter</button>
+      </div>
+      <h3>Total : {monsteraPrice * cart}€</h3>
+      <button onClick={() => updateCart(0)}>Vider le panier</button>
+    </div>
+  ) : (
+    <div className="lmj-cart-closed">
+      <button onClick={() => setIsOpen(true)}>Ouvrir le Panier</button>
     </div>
   );
 };
