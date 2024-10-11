@@ -1,4 +1,4 @@
-![Logo de l'application](src/assets/logos/nom_du_logo.png)
+![Logo de l'application](https://github.com/Maryonete/plant-store-react/raw/main/src/assets/logo.png)
 
 # Application React : Gestion des Plantes 🌱
 
