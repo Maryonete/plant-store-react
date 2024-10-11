@@ -1,37 +1,70 @@
+import { useState, useEffect } from "react";
 import "../styles/Cart.css";
 
-import { useState } from "react";
+function Cart({ cart, updateCart }) {
+  const [isOpen, setIsOpen] = useState(true);
+  const total = cart.reduce(
+    (acc, plantType) => acc + plantType.amount * plantType.price,
+    0
+  );
+  useEffect(() => {
+    document.title = `LMJ: ${total}€ d'achats`;
+  }, [total]);
 
-const Cart = () => {
-  const monsteraPrice = 8;
-  // cart : le state
-  // updateCart : fonction pour maj ce state
-  // useState(0) : état initial de notre state
-  const [cart, updateCart] = useState(0);
-
-  const [isOpen, setIsOpen] = useState(false);
-
+  function deleteToCart(name, price) {
+    const currentPlantSaved = cart.find((plant) => plant.name === name);
+    if (currentPlantSaved) {
+      if (currentPlantSaved.amount < 2) {
+        updateCart([
+          ...cart.filter((plant) => plant.name !== currentPlantSaved.name),
+        ]);
+      } else {
+        const cartFilteredCurrentPlant = cart.filter(
+          (plant) => plant.name !== name
+        );
+        updateCart([
+          ...cartFilteredCurrentPlant,
+          { name, price, amount: currentPlantSaved.amount - 1 },
+        ]);
+      }
+    }
+  }
   return isOpen ? (
     <div className="lmj-cart">
       <button
         className="lmj-cart-toggle-button"
         onClick={() => setIsOpen(false)}
       >
-        Fermer le Panier
+        Fermer
       </button>
-      <h2>Panier</h2>
-      <div>
-        Monstera : {monsteraPrice}€
-        <button onClick={() => updateCart(cart + 1)}>Ajouter</button>
-      </div>
-      <h3>Total : {monsteraPrice * cart}€</h3>
-      <button onClick={() => updateCart(0)}>Vider le panier</button>
+      {cart.length > 0 ? (
+        <div>
+          <h2>Panier</h2>
+          <ul>
+            {cart.map(({ name, price, amount }, index) => (
+              <div key={`${name}-${index}`}>
+                {name} {price}€ x {amount}
+                <button onClick={() => deleteToCart(name, price)}>X</button>
+              </div>
+            ))}
+          </ul>
+          <h3>Total :{total}€</h3>
+          <button onClick={() => updateCart([])}>Vider le panier</button>
+        </div>
+      ) : (
+        <div>Votre panier est vide</div>
+      )}
     </div>
   ) : (
     <div className="lmj-cart-closed">
-      <button onClick={() => setIsOpen(true)}>Ouvrir le Panier</button>
+      <button
+        className="lmj-cart-toggle-button"
+        onClick={() => setIsOpen(true)}
+      >
+        Ouvrir le Panier
+      </button>
     </div>
   );
-};
+}
 
 export default Cart;
